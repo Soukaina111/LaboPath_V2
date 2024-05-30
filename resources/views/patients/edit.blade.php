@@ -19,8 +19,6 @@
             border-radius: 5px; /* Rounded corners */
             transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; /* Smooth transitions */
         }
-
-        /* Button styling */
         button[type="submit"],.btn.btn-secondary {
             font-weight: bold; /* Bold text for buttons */
             padding: 10px 20px; /* More padding for easier clicking */
@@ -33,8 +31,6 @@
             background-color: #007bff; /* Blue background on hover */
             color: white; /* White text on hover */
         }
-
-        /* Error message styling */
        .invalid-feedback {
             display: inline-block; /* Make error messages visible */
             color: red; /* Red text for errors */
