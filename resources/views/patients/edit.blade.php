@@ -9,12 +9,11 @@
             padding: 30px; /* Added vertical padding */
             text-align: left; /* Align text to the left for better readability */
         }
-                   /* Form group styling */
+
        .form-group.row {
             margin-bottom: 15px; /* Spacing between form groups */
         }
 
-        /* Input fields and select boxes */
        .form-control {
             border-radius: 5px; /* Rounded corners */
             transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; /* Smooth transitions */
