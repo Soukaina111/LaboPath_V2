@@ -64,3 +64,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Project Name
+LaboPath
+## Introduction
+It's a Software designed to pathology laboratory management
+## Author's LinkedIn
+https://www.linkedin.com/in/soukaina-ait-gaghou/
+
+## Installation
+Locally deploed with Xampp
+
+## Usage
+Currently as a portfolio project
+
+## Screen shot 
+<a href="#">
+    <img src="/images/screeeenshot.png" alt="Screenshot">
+</a>

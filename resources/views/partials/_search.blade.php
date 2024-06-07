@@ -17,7 +17,6 @@
     </style>
 </head>
 <body>
-
 <form action="/">
     <div class="search-container">
         <input type="text" name="search" class="search-input" background-color="green"  

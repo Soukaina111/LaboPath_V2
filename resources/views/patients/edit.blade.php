@@ -1,61 +1,23 @@
 <x-layout>
-    <style>
-        /* Updated main container styling */
-        #main {
-            background-color: #f8f9fa; /* Lighter background color */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
-            margin: 10px auto; /* Increased margin for better spacing */
-            max-width: 1000px; /* Slightly wider max width for larger screens */
-            padding: 30px; /* Added vertical padding */
-            text-align: left; /* Align text to the left for better readability */
-        }
-
-       .form-group.row {
-            margin-bottom: 15px; /* Spacing between form groups */
-        }
-
-       .form-control {
-            border-radius: 5px; /* Rounded corners */
-            transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; /* Smooth transitions */
-        }
-        button[type="submit"],.btn.btn-secondary {
-            font-weight: bold; /* Bold text for buttons */
-            padding: 10px 20px; /* More padding for easier clicking */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: background-color 0.3s ease; /* Background color transition */
-        }
-
-        button[type="submit"]:hover,.btn.btn-secondary:hover {
-            background-color: #007bff; /* Blue background on hover */
-            color: white; /* White text on hover */
-        }
-       .invalid-feedback {
-            display: inline-block; /* Make error messages visible */
-            color: red; /* Red text for errors */
-        }
-    </style>
-    <div id="main">
+    <div id="main3">
         <form method="POST" action="{{ route('patients.update', $patient->id) }}">
             @csrf
             @method('PUT')
             <div class="form-group row">
-                <label for="last_name">{{ __('Nom de famille') }}</label>
+                <label for="last_name">{{ __('Last Name') }}</label>
 
                 <div class="col-md-6">
                     <input id="last_name" type="text" class="form-control" name="last_name" value="{{$patient->last_name}}" required>
                 </div>
             </div>
-
             <div class="form-group row">
-                <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
-
+                <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
                 <div class="col-md-6">
                     <input id="first_name" type="text" class="form-control" name="first_name" value="{{$patient->first_name}}" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="DDN" class="col-md-4 col-form-label text-md-right">Date de Naissance</label>
+                <label for="DDN" class="col-md-4 col-form-label text-md-right">Date of Birth</label>
                 <div class="col-md-6">
                     <input id="DDN" type="date" class="form-control" value="{{$patient->DDN}}" name="DDN" onchange="calculateAge(this.value)">
                     @error('DDN')
@@ -66,33 +28,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="age" class="col-md-4 col-form-label text-md-right">Âge</label>
+                <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
                 <div class="col-md-6">
-                    <input id="age" type="text"  class="form-control" name="age">
+                    <input id="age" type="text"  class="form-control" name="age" value="{{$patient->age}}">
                 </div>
             </div>
-            <script>
-                function calculateAge(date) {
-                    var birthdate = new Date(date);
-                    var today = new Date();
-                    var age = today.getFullYear() - birthdate.getFullYear();
-                    var m = today.getMonth() - birthdate.getMonth();
-                    if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
-                        age--;
-                    }
-                    document.getElementById("age").value = age;
-                }
-                </script>
             <div class="form-group row">
                 <label for="CIN" class="col-md-4 col-form-label text-md-right">{{ __('CIN') }}</label>
-
                 <div class="col-md-6">
                     <input id="CIN" type="text" class="form-control" name="CIN" value="{{$patient->CIN}}" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="CIV" class="col-md-4 col-form-label text-md-right">{{ __('Civilité') }}</label>
-            
+                <label for="CIV" class="col-md-4 col-form-label text-md-right">{{ __('Civility') }}</label>
                 <div class="col-md-6">
                     <select id="CIV" class="form-control" name="CIV" required>
                         <!-- Pre-select the option that matches $patient->CIV -->
@@ -105,11 +53,19 @@
                     </select>
                 </div>
             </div>
-            
-
             <div class="form-group row">
-                <label for="referent" class="col-md-4 col-form-label text-md-right">{{ __('Médecin Référent') }}</label>
-
+                <label for="sample_type" class="col-md-4 col-form-label text-md-right">{{ __('Sample type') }}</label>                <div class="col-md-6">
+                    <input id="sample_type" type="text" class="form-control" name="sample_type" value="{{$patient->sample_type}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="organe" class="col-md-4 col-form-label text-md-right">{{ __('Organe') }}</label>
+                <div class="col-md-6">
+                    <input id="organe" type="text" class="form-control" name="organe" value="{{$patient->organe}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="referent" class="col-md-4 col-form-label text-md-right">{{ __('Referent') }}</label>
                 <div class="col-md-6">
                     <input id="referent" type="text" class="form-control" name="referent" value="{{$patient->referent}}" required>
                 </div>
@@ -117,12 +73,12 @@
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit">
-                        {{ __('Modifier') }}
+                        {{ __('Update') }}
                         </a>
                     </button>
-                    <a href="" class="btn btn-secondary">
-                        {{ __('Annuler') }}
-                    </a>
+                    <a href="/" class="btn btn-secondary">
+                        {{ __('Cancel') }}
+                    </a>          
                 </div>
             </div>
         </form>

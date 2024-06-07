@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -91,6 +92,46 @@
     .left-links a {
         margin-right: 20px;
     }
+    /*NEW STYLE EDIT AND CREATE MAIN DIV*/
+
+           /* Updated main container styling */
+           #main3 {
+                background-color: #f8f9fa; /* Lighter background color */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+                margin: 10px auto; /* Increased margin for better spacing */
+                max-width: 1000px; /* Slightly wider max width for larger screens */
+                padding: 30px; /* Added vertical padding */
+                text-align: left; /* Align text to the left for better readability */
+            }
+                       /* Form group styling */
+           .form-group.row {
+                margin-bottom: 15px; /* Spacing between form groups */
+            }
+
+            /* Input fields and select boxes */
+           .form-control {
+                border-radius: 5px; /* Rounded corners */
+                transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; /* Smooth transitions */
+            }
+            /* Button styling */
+            button[type="submit"],.btn.btn-secondary {
+                font-weight: bold; /* Bold text for buttons */
+                padding: 10px 20px; /* More padding for easier clicking */
+                border-radius: 5px; /* Rounded corners */
+                cursor: pointer; /* Pointer cursor on hover */
+                transition: background-color 0.3s ease; /* Background color transition */
+            }
+            button[type="submit"]:hover,.btn.btn-secondary:hover {
+                background-color: #007bff; /* Blue background on hover */
+                color: white; /* White text on hover */
+            }
+
+            /* Error message styling */
+           .invalid-feedback {
+                display: inline-block; /* Make error messages visible */
+                color: red; /* Red text for errors */
+            }
+            /*END*/
   </style>
 </head>
 <body>
@@ -100,10 +141,10 @@
     </div>
     <div id="main1">
         <div class="btn-container">
-            <a href="/" style="background-color: rgb(212, 11, 135);">Accueil</a>
-            <a href="patients/create">Nouvelle Demande</a>
-            <a href="/patients/day">Demandes Du Jour</a>
-            <a href="/" style="background-color: rgb(46, 136, 103);">Retour</a>
+            <a href="/" style="background-color: rgb(212, 11, 135);">Dashboard</a>
+            <a href="patients/create/">Add New</a>
+            <a href="/patients/day">Records of the day</a>
+            <a href="/" style="background-color: rgb(46, 136, 103);">Back</a>
         </div>
     </div>
     {{$slot}}

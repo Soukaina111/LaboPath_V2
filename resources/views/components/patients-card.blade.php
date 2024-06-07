@@ -1,4 +1,4 @@
-@props(['patients'])
+@props(['patients', 'file'])
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -34,10 +34,10 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>PRENOM</th>
-            <th>NOM</th>
-            <th>CIN</th>
-            <th>Age</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Sample Type</th>
+            <th>Organe</th>
             <th>Referant</th>
             <th>Action</th>
         </tr>
@@ -48,11 +48,13 @@
               <td>{{$loop->iteration}}</td>
                 <td>{{$patient->first_name}}</td>
                 <td>{{$patient->last_name}}</td>
-                <td>{{$patient->CIN}}</td>
-                <td>{{$patient->age}}</td>
+                <td>{{$patient->sample_type}}</td>
+                <td>{{$patient->organe}}</td>
                 <td>{{$patient->referent}}</td>
                 <td style="text-align: center;">
                 <a href="/patients/{{$patient->id}}/edit" class="Edit" title="Modifier" data-toggle="tooltip"><i class="fas fa-pencil-alt fa-lg" style="color: green;"></i></a>
+                {{-- <a href="/files/{{$patient->id}}/edit" class="Edit" title="Modifier file " data-toggle="tooltip"><i class="fas fa-pencil-alt fa-lg" style="color: rgb(128, 0, 107);"></i></a> --}}
+
                 <a href="/patients/{{$patient->id}}" class="show" title="Afficher" data-toggle="tooltip"><i class="fas fa-eye fa-lg" style="color: rgb(17, 0, 255);"></i></a> 
                 <a href="{{ route('Patient.destroy',  ['id' => $patient->id])  }}" class="delete"
                     title="Delete" data-toggle="tooltip">

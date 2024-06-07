@@ -1,50 +1,9 @@
 <x-layout>
-        <style>
-            /* Updated main container styling */
-            #main {
-                background-color: #f8f9fa; /* Lighter background color */
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
-                margin: 10px auto; /* Increased margin for better spacing */
-                max-width: 1000px; /* Slightly wider max width for larger screens */
-                padding: 30px; /* Added vertical padding */
-                text-align: left; /* Align text to the left for better readability */
-            }
-                       /* Form group styling */
-           .form-group.row {
-                margin-bottom: 15px; /* Spacing between form groups */
-            }
-
-            /* Input fields and select boxes */
-           .form-control {
-                border-radius: 5px; /* Rounded corners */
-                transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; /* Smooth transitions */
-            }
-
-            /* Button styling */
-            button[type="submit"],.btn.btn-secondary {
-                font-weight: bold; /* Bold text for buttons */
-                padding: 10px 20px; /* More padding for easier clicking */
-                border-radius: 5px; /* Rounded corners */
-                cursor: pointer; /* Pointer cursor on hover */
-                transition: background-color 0.3s ease; /* Background color transition */
-            }
-
-            button[type="submit"]:hover,.btn.btn-secondary:hover {
-                background-color: #007bff; /* Blue background on hover */
-                color: white; /* White text on hover */
-            }
-
-            /* Error message styling */
-           .invalid-feedback {
-                display: inline-block; /* Make error messages visible */
-                color: red; /* Red text for errors */
-            }
-        </style>
-        <div id="main">
+        <div id="main3">
             <form method="POST" action="{{route('patients.store')}}">
                 @csrf
                 <div class="form-group row">
-                    <label for="last_name">{{ __('Nom de famille') }}</label>
+                    <label for="last_name">{{ __('Last Name') }}</label>
     
                     <div class="col-md-6">
                         <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required>
@@ -52,14 +11,14 @@
                 </div>
     
                 <div class="form-group row">
-                    <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
+                    <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
     
                     <div class="col-md-6">
                         <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="DDN" class="col-md-4 col-form-label text-md-right">Date de Naissance</label>
+                    <label for="DDN" class="col-md-4 col-form-label text-md-right">Date of Birth</label>
                     <div class="col-md-6">
                         <input id="DDN" type="date" class="form-control" name="DDN" onchange="calculateAge(this.value)" value="{{ old('DDN') }}">
                         @error('DDN')
@@ -70,11 +29,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="age" class="col-md-4 col-form-label text-md-right">Âge</label>
+                    <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
                     <div class="col-md-6">
                         <input id="age" type="text" class="form-control" name="age" value="{{ old('age') }}">
                     </div>
                 </div>
+                {{-- // This script is used to calculate age based on the date of birth --}}
                 <script>
                     function calculateAge(date) {
                         var birthdate = new Date(date);
@@ -87,7 +47,6 @@
                         document.getElementById("age").value = age;
                     }
                     </script>
-
                 <div class="form-group row">
                     <label for="CIN" class="col-md-4 col-form-label text-md-right">{{ __('CIN') }}</label>
     
@@ -96,11 +55,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="CIV" class="col-md-4 col-form-label text-md-right">{{ __('Civilité') }}</label>
-    
+                    <label for="CIV" class="col-md-4 col-form-label text-md-right">{{ __('Civility') }}</label>
                     <div class="col-md-6">
                         <select id="CIV" class="form-control" name="CIV" required>
-                            <option value="">Sélectionner une civilité</option>
+                            <option value="">Select civility</option>
                             <option value="M">M</option>
                             <option value="Mme">Mme</option>
                             <option value="Mlle">Mlle</option>
@@ -108,8 +66,20 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="referent" class="col-md-4 col-form-label text-md-right">{{ __('Médecin Référent') }}</label>
+                    <label for="sample_type" class="col-md-4 col-form-label text-md-right">{{ __('Sample type') }}</label>
     
+                    <div class="col-md-6">
+                        <input id="sample_type" type="text" class="form-control" name="sample_type" value="{{ old('sample_type') }}" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="organe" class="col-md-4 col-form-label text-md-right">{{ __('Organe') }}</label>
+                    <div class="col-md-6">
+                        <input id="organe" type="text" class="form-control" name="organe" value="{{ old('organe') }}" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="referent" class="col-md-4 col-form-label text-md-right">{{ __('Referent') }}</label>
                     <div class="col-md-6">
                         <input id="referent" type="text" class="form-control" name="referent" value="{{ old('referent') }}" required>
                     </div>
@@ -117,11 +87,11 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit">
-                            {{ __('Ajouter') }}
+                            {{ __('Add') }}
                             </a>
                         </button>
-                        <a href="" class="btn btn-secondary">
-                            {{ __('Annuler') }}
+                        <a href="/" class="btn btn-secondary">
+                            {{ __('Cancel') }}
                         </a>
                     </div>
                 </div>

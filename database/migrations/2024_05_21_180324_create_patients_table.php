@@ -19,6 +19,8 @@ return new class extends Migration
             $table->date('DDN')->nullable();
             $table->string('age')->nullable();
             $table->string('CIV');
+            $table->string('organe');
+            $table->string('sample_type');
             $table->string('referent');
             $table->rememberToken();
             $table->timestamps();
